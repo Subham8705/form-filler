@@ -37,7 +37,7 @@ const Navbar = () => {
               <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-neon-blue/20 to-neon-purple/20 blur-lg group-hover:blur-xl transition-all duration-300"></div>
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-neon-blue to-white bg-clip-text text-transparent">
-              Form Filler
+              ZapFill.Ai
             </span>
           </Link>
 

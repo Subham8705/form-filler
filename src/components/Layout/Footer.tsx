@@ -15,7 +15,7 @@ const Footer = () => {
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-neon-blue/20 to-neon-purple/20 blur-lg"></div>
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-neon-blue to-white bg-clip-text text-transparent">
-                Form Filler
+                ZapFill.Ai
               </span>
             </div>
             <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
@@ -105,7 +105,7 @@ const Footer = () => {
         <div className="border-t border-neon-blue/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 mb-4 md:mb-0">
-              © 2025 Form Filler. All rights reserved. Made with <Heart className="inline h-4 w-4 text-neon-pink mx-1" /> for easier forms.
+              © 2025 ZapFill.Ai. All rights reserved. Made with <Heart className="inline h-4 w-4 text-neon-pink mx-1" /> for easier forms.
             </p>
             <div className="flex items-center space-x-2 text-sm text-gray-500">
               <span>Built by:</span>

@@ -85,7 +85,7 @@ const ContactPage = () => {
             Get in Touch
           </h1>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Have questions about Form Filler? Need technical support? Want to share feedback? 
+            Have questions about ZapFill.Ai? Need technical support? Want to share feedback? 
             We'd love to hear from you.
           </p>
         </div>

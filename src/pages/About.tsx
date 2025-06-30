@@ -45,7 +45,7 @@ const AboutPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center animate-slide-up">
             <h1 className="text-5xl sm:text-6xl font-bold text-white mb-8">
-            About <span className="bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">Form Filler</span>
+            About <span className="bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">ZapFill.Ai</span>
           </h1>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
               We're on a mission to make digital forms accessible, efficient, and effortless for everyone. 
@@ -94,7 +94,7 @@ const AboutPage = () => {
               </p>
               <p className="text-lg text-gray-400 mb-6 leading-relaxed">
                 We believe technology should eliminate these pain points, not create them. That's why we built 
-                Form Filler with three core principles: accessibility, intelligence, and privacy.
+                ZapFill.Ai with three core principles: accessibility, intelligence, and privacy.
               </p>
               <div className="flex items-center space-x-4">
                 <div className="bg-primary-100 p-3 rounded-lg">
@@ -110,7 +110,7 @@ const AboutPage = () => {
               <div className="bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl p-8 text-white">
                 <Lightbulb className="h-12 w-12 mb-6" />
                 <blockquote className="text-lg italic mb-4">
-                  "We started Form Filler because we were tired of filling out the same information 
+                  "We started ZapFill.Ai because we were tired of filling out the same information 
                   over and over again. Now millions of people save hours every month."
                 </blockquote>
                 <cite className="font-semibold">— Naina</cite>

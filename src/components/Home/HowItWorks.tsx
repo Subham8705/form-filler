@@ -13,7 +13,7 @@ const HowItWorks = () => {
     {
       icon: Bot,
       title: 'Enable AI Extension',
-      description: 'Activate Form Filler on any website. Our advanced AI instantly recognizes and maps form fields with 99.9% accuracy.',
+      description: 'Activate ZapFill.Ai on any website. Our advanced AI instantly recognizes and maps form fields with 99.9% accuracy.',
       color: 'from-neon-purple to-neon-pink',
       glowColor: 'neon-purple',
     },
@@ -61,7 +61,7 @@ const HowItWorks = () => {
             AI-Powered Process
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            How <span className="bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">Form Filler</span> Works
+            How <span className="bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">ZapFill.Ai</span> Works
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Get started in just three simple steps and transform how you interact with online forms forever.

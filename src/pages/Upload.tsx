@@ -104,7 +104,7 @@ const UploadPage = () => {
           </h1>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Transform scanned PDFs and physical forms into smart, fillable digital versions 
-            that work seamlessly with Form Filler's AI technology.
+            that work seamlessly with ZapFill.Ai's AI technology.
           </p>
         </div>
 
@@ -273,7 +273,7 @@ const UploadPage = () => {
             </div>
             <h3 className="font-semibold text-gray-900 mb-2">Smart Fields</h3>
             <p className="text-gray-600 text-sm">
-              Converted forms work perfectly with Form Filler's auto-fill capabilities.
+              Converted forms work perfectly with ZapFill.Ai's auto-fill capabilities.
             </p>
           </div>
 

@@ -52,7 +52,7 @@ const DownloadPage = () => {
             <Sparkles className="h-4 w-4 ml-2 animate-pulse" />
           </div>
           <h1 className="text-5xl sm:text-6xl font-bold text-white mb-8 py-10">
-            Download <span className="bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">Form Filler</span>
+            Download <span className="bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">ZapFill.Ai</span>
           </h1>
           <p className="text-xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
             Transform your online form experience with AI-powered automation, voice guidance, 
