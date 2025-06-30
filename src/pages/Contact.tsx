@@ -29,21 +29,21 @@ const ContactPage = () => {
     {
       icon: Mail,
       title: 'Email Support',
-      value: 'support@formfiller.ai',
+      value: 'subhamkumarshee@gmail.com',
       description: 'Get help within 24 hours',
     },
     {
       icon: Phone,
       title: 'Phone Support',
-      value: '+1 (555) 123-4567',
-      description: 'Mon-Fri, 9AM-6PM PST',
+      value: '+91 85198 38150',
+      description: 'Mon-Fri, 9AM-6PM IST',
     },
-    {
-      icon: MapPin,
-      title: 'Headquarters',
-      value: 'San Francisco, CA',
-      description: 'Silicon Valley, USA',
-    },
+    // {
+    //   icon: MapPin,
+    //   title: 'Headquarters',
+    //   value: 'San Francisco, CA',
+    //   description: 'Silicon Valley, USA',
+    // },
   ];
 
   if (isSubmitted) {
@@ -71,24 +71,31 @@ const ContactPage = () => {
   }
 
   return (
-    <div className="pt-16 min-h-screen bg-gradient-to-br from-primary-50 via-white to-blue-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div className="pt-16 min-h-screen bg-gradient-to-br from-dark-950 via-dark-900 to-dark-800 relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-cyber-grid opacity-10"></div>
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-radial from-neon-blue/20 to-transparent rounded-full blur-3xl animate-pulse-neon"></div>
+      <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-neon-purple/20 to-transparent rounded-full blur-3xl animate-pulse-neon" style={{ animationDelay: '1s' }}></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-19 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
         {/* Header */}
         <div className="text-center mb-16 animate-slide-up">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-300 mb-6">
             Get in Touch
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Have questions about Form Filler? Need technical support? Want to share feedback? 
             We'd love to hear from you.
           </p>
         </div>
+      </div>
 
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Contact Info */}
           <div className="lg:col-span-1 space-y-8">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl font-bold text-gray-300 mb-6">
                 Contact Information
               </h2>
               {contactInfo.map((info, index) => {
@@ -99,7 +106,7 @@ const ContactPage = () => {
                       <Icon className="h-6 w-6 text-primary-600" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">{info.title}</h3>
+                      <h3 className="font-semibold text-gray-300 mb-1">{info.title}</h3>
                       <p className="text-primary-600 font-medium mb-1">{info.value}</p>
                       <p className="text-gray-600 text-sm">{info.description}</p>
                     </div>

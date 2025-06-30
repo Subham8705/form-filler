@@ -28,7 +28,7 @@ const Hero = () => {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-neon-blue/20 to-transparent rounded-full blur-3xl animate-pulse-neon"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-radial from-neon-purple/20 to-transparent rounded-full blur-3xl animate-pulse-neon" style={{ animationDelay: '1s' }}></div>
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+      <div className="relative max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8 text-center z-10">
         <div className="animate-slide-up">
           {/* Badge */}
           <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-neon-blue/20 to-neon-purple/20 backdrop-blur-sm border border-neon-blue/30 text-neon-blue text-sm font-medium mb-8 animate-glow">
@@ -38,11 +38,11 @@ const Hero = () => {
           </div>
 
           {/* Headline */}
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
+          <h1 className="text-5xl sm:text-7xl py-4 lg:text-8xl font-bold text-white mb-8 leading-tight">
             <span className="block bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent animate-glow">
               Effortless Forms.
             </span>
-            <span className="block text-white mt-2">
+            <span className="block text-white mt-2 py-4">
               AI-Powered.
             </span>
           </h1>
@@ -95,7 +95,7 @@ const Hero = () => {
           <div className="mt-16 p-6 rounded-2xl bg-gradient-to-r from-dark-800/50 to-dark-700/50 backdrop-blur-sm border border-neon-blue/20">
             <p className="text-gray-400 text-sm mb-2">Built by the amazing team:</p>
             <div className="flex flex-wrap justify-center gap-4">
-              {['Subham', 'Naina', 'Gowthami', 'Venkat'].map((name, index) => (
+              {['Subham', 'Naina'].map((name, index) => (
                 <span 
                   key={name} 
                   className="px-4 py-2 bg-gradient-to-r from-neon-blue/20 to-neon-purple/20 rounded-full text-neon-blue font-medium text-sm border border-neon-blue/30 hover:border-neon-purple/50 transition-all duration-300 cursor-default"
