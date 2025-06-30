@@ -20,6 +20,16 @@ const AboutPage = () => {
       // role: 'CTO & Co-founder',
       // description: 'AI engineer specializing in NLP and voice recognition systems.',
     },
+    {
+      name: 'Gowthami',
+      // role: 'CTO & Co-founder',
+      // description: 'AI engineer specializing in NLP and voice recognition systems.',
+    },
+    {
+      name: 'Venkat',
+      // role: 'CTO & Co-founder',
+      // description: 'AI engineer specializing in NLP and voice recognition systems.',
+    },
   ];
 
   return (
@@ -173,7 +183,7 @@ const AboutPage = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-20">
+          <div className="grid md:grid-cols-4 gap-12">
             {team.map((member, index) => (
               <div key={index} className="bg-gray-600 p-8 rounded-2xl shadow-lg text-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full mx-auto mb-6 flex items-center justify-center">

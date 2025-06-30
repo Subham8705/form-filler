@@ -110,7 +110,7 @@ const Footer = () => {
             <div className="flex items-center space-x-2 text-sm text-gray-500">
               <span>Built by:</span>
               <div className="flex space-x-2">
-                {['Subham', 'Naina'].map((name, index) => (
+                {['Subham', 'Naina', "Gowthami", "Venkat"].map((name, index) => (
                   <span 
                     key={name} 
                     className="px-2 py-1 bg-gradient-to-r from-neon-blue/10 to-neon-purple/10 rounded text-neon-blue text-xs border border-neon-blue/20"

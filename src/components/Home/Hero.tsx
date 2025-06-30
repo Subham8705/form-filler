@@ -95,7 +95,7 @@ const Hero = () => {
           <div className="mt-16 p-6 rounded-2xl bg-gradient-to-r from-dark-800/50 to-dark-700/50 backdrop-blur-sm border border-neon-blue/20">
             <p className="text-gray-400 text-sm mb-2">Built by the amazing team:</p>
             <div className="flex flex-wrap justify-center gap-4">
-              {['Subham', 'Naina'].map((name, index) => (
+              {['Subham', 'Naina', 'Gowthami', "Venkat"].map((name, index) => (
                 <span 
                   key={name} 
                   className="px-4 py-2 bg-gradient-to-r from-neon-blue/20 to-neon-purple/20 rounded-full text-neon-blue font-medium text-sm border border-neon-blue/30 hover:border-neon-purple/50 transition-all duration-300 cursor-default"
