@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AutoFill Settings</title>
+  <title>Form AutoFill</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>Form AutoFill</h1>
+
+  <label for="profileSelect">Select Profile:</label>
+  <select id="profileSelect">
+    <option value="default">Default</option>
+    <option value="hackathon">Hackathon</option>
+    <option value="internship">Internship</option>
+    <option value="shopping">Shopping</option>
+  </select>
+
   <form id="autofill-form">
     <input name="name" placeholder="Name" />
     <input name="email" placeholder="Email" />
@@ -15,8 +24,32 @@
     <input name="linkedin" placeholder="LinkedIn URL" />
     <input name="github" placeholder="GitHub URL" />
     <textarea name="message" placeholder="Statement or Message"></textarea>
+
+    <div id="hackathonExtra" style="display: none;">
+      <input name="projectTitle" placeholder="Project Title" />
+      <input name="teamName" placeholder="Team Name" />
+      <input name="projectLink" placeholder="Project Link" />
+      <div id="teamMembers"></div>
+      <button type="button" id="addMember">+ Add Team Member</button>
+    </div>
+
+    <div id="internshipExtra" style="display: none;">
+      <input name="skills" placeholder="Skills" />
+      <input name="experience" placeholder="Experience" />
+      <input name="portfolio" placeholder="Portfolio URL" />
+    </div>
+
+    <div id="shoppingExtra" style="display: none;">
+      <input name="shippingAddress" placeholder="Shipping Address" />
+      <input name="pincode" placeholder="Pincode" />
+      <input name="city" placeholder="City" />
+      <input name="state" placeholder="State" />
+      <input name="landmark" placeholder="Landmark" />
+    </div>
+
     <button type="submit">Save</button>
   </form>
+
+  <script src="popup.js"></script>
 </body>
-<script src="popup.js"></script>
 </html>

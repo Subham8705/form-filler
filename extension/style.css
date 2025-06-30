@@ -1,34 +1,88 @@
 body {
-  width: 300px;
-  padding: 10px;
-  font-family: Arial, sans-serif;
+  width: 320px;
+  padding: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(ellipse at top, #0a0a23, #000);
+  color: #f1f1f1;
+  border-radius: 10px;
 }
 
 h1 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  text-align: center;
+  background: linear-gradient(to right, #00f0ff, #ff00c8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 form {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 input, textarea {
-  margin: 5px 0;
-  padding: 6px;
+  padding: 10px;
   font-size: 14px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background: #1e1e2f;
+  color: #fff;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #aaa;
+}
+
+input:focus, textarea:focus {
+  border-color: #7a00ff;
 }
 
 button {
-  margin-top: 10px;
-  padding: 8px;
-  background-color: #ff0080;
+  padding: 10px;
+  background: linear-gradient(to right, #00f0ff, #ff00c8);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
+
 button:hover {
-  background-color: #e60073;
+  transform: scale(1.02);
+  box-shadow: 0 0 8px #ff00c8;
+}
+
+label {
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 4px;
+  color: #ccc;
+}
+
+select {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background: #1e1e2f;
+  color: #fff;
+  outline: none;
+  appearance: none; /* Remove default arrow */
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23ff00c8' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+select:focus {
+  border-color: #7a00ff;
+  box-shadow: 0 0 5px #7a00ff;
 }
