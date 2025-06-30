@@ -91,14 +91,18 @@ const UploadPage = () => {
   };
 
   return (
-    <div className="pt-16 min-h-screen bg-gradient-to-br from-primary-50 via-white to-blue-50">
+    <div className="pt-16 min-h-screen bg-gradient-to-br from-dark-950 via-dark-900 to-dark-800 relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-cyber-grid opacity-10"></div>
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-radial from-neon-blue/20 to-transparent rounded-full blur-3xl animate-pulse-neon"></div>
+      <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-neon-purple/20 to-transparent rounded-full blur-3xl animate-pulse-neon" style={{ animationDelay: '1s' }}></div>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Header */}
         <div className="text-center mb-12 animate-slide-up">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-300 mb-6">
             Convert Physical Forms
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Transform scanned PDFs and physical forms into smart, fillable digital versions 
             that work seamlessly with Form Filler's AI technology.
           </p>
