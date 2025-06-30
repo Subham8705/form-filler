@@ -10,19 +10,28 @@ const defaultData = {
 };
 
 function smartMatch(label, data) {
-  const lower = label.toLowerCase();
-  if (lower.includes("name")) return data.name;
+  const lower = label.toLowerCase().trim();
+
+  // Strict matches first
+  if (["name", "full name"].includes(lower)) return data.name;
   if (lower.includes("email")) return data.email;
   if (lower.includes("phone") || lower.includes("mobile")) return data.phone;
   if (lower.includes("address")) return data.address;
   if (lower.includes("college") || lower.includes("university")) return data.college;
   if (lower.includes("linkedin")) return data.linkedin;
   if (lower.includes("github")) return data.github;
-  if (lower.includes("statement") || lower.includes("sop") || lower.includes("why"))
-    return data.message;
+  if (
+    lower.includes("statement") ||
+    lower.includes("sop") ||
+    lower.includes("why") ||
+    lower.includes("objective")
+  ) return data.message;
   if (lower.includes("message")) return data.message;
+
   return null;
 }
+
+
 
 // For Google Forms
 function fillGoogleForms(data) {

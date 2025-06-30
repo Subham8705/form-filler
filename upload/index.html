@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Form Summarizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        #upload-section, #summary-section {
+            margin: 20px 0;
+        }
+        #file-input {
+            padding: 10px;
+        }
+        #summary {
+            border: 1px solid #ccc;
+            padding: 15px;
+            min-height: 100px;
+            text-align: left;
+        }
+        .field {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .field-value {
+            font-weight: normal;
+        }
+        .general-summary {
+            margin-top: 20px;
+            font-style: italic;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>PDF Form Summarizer</h1>
+    <div id="upload-section">
+        <input type="file" id="file-input" accept=".pdf">
+        <button onclick="uploadFile()">Upload and Summarize</button>
+    </div>
+    <div id="summary-section">
+        <h2>Form Details</h2>
+        <div id="summary">Upload a PDF to see the extracted details and summary here.</div>
+    </div>
+
+    <script>
+        async function uploadFile() {
+            const fileInput = document.getElementById('file-input');
+            const summaryDiv = document.getElementById('summary');
+            
+            if (!fileInput.files[0]) {
+                summaryDiv.innerHTML = '<span class="error">Please select a PDF file.</span>';
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            try {
+                summaryDiv.innerHTML = 'Processing...';
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (response.ok) {
+                    const { fields, summary } = result;
+                    let fieldsHtml = '';
+                    if (Object.keys(fields).length > 0) {
+                        fieldsHtml = Object.entries(fields).map(([key, value]) => 
+                            `<div class="field">${key}: <span class="field-value">${value || 'Not found'}</span></div>`
+                        ).join('');
+                    } else {
+                        fieldsHtml = '<div class="error">No fields extracted.</div>';
+                    }
+                    if (summary) {
+                        fieldsHtml += `<div class="general-summary"><strong>Additional Details:</strong> ${summary}</div>`;
+                    } else if (!summary && Object.keys(fields).length === 0) {
+                        fieldsHtml += '<div class="error">No summary or fields extracted.</div>';
+                    }
+                    summaryDiv.innerHTML = fieldsHtml;
+                } else {
+                    summaryDiv.innerHTML = `<span class="error">${result.error || 'Unknown error'}</span>`;
+                }
+            } catch (error) {
+                summaryDiv.innerHTML = `<span class="error">Error: ${error.message}</span>`;
+                console.error('Fetch error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

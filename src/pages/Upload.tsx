@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import { Upload, FileText, CheckCircle, X, Download, ArrowRight } from 'lucide-react';
 
+interface ExtractedData {
+  fields: Record<string, string>;
+  summary: string;
+}
+
 const UploadPage = () => {
   const [dragActive, setDragActive] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
+  const [extractedData, setExtractedData] = useState<ExtractedData | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
@@ -26,6 +33,9 @@ const UploadPage = () => {
       const file = e.dataTransfer.files[0];
       if (file.type === 'application/pdf') {
         setUploadedFile(file);
+        setError(null);
+      } else {
+        setError('Please upload a PDF file');
       }
     }
   };
@@ -35,25 +45,49 @@ const UploadPage = () => {
       const file = e.target.files[0];
       if (file.type === 'application/pdf') {
         setUploadedFile(file);
+        setError(null);
+      } else {
+        setError('Please upload a PDF file');
       }
     }
   };
 
-  const handleConvert = () => {
+  const handleConvert = async () => {
     if (!uploadedFile) return;
     
     setIsProcessing(true);
-    // Simulate processing time
-    setTimeout(() => {
-      setIsProcessing(false);
+    setError(null);
+    
+    try {
+      const formData = new FormData();
+      formData.append('file', uploadedFile);
+
+      const response = await fetch('http://localhost:5001/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
+
+      const result = await response.json();
+      setExtractedData(result);
       setIsComplete(true);
-    }, 3000);
+    } catch (err) {
+      console.error('Error processing PDF:', err);
+      setError(err instanceof Error ? err.message : 'Failed to process the PDF');
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   const resetUpload = () => {
     setUploadedFile(null);
     setIsProcessing(false);
     setIsComplete(false);
+    setExtractedData(null);
+    setError(null);
   };
 
   return (
@@ -105,6 +139,7 @@ const UploadPage = () => {
               <p className="text-sm text-gray-500 mt-4">
                 Supports PDF files up to 10MB
               </p>
+              {error && <p className="text-red-500 mt-2">{error}</p>}
             </div>
           )}
 
@@ -146,7 +181,7 @@ const UploadPage = () => {
                 <div className="text-center animate-fade-in">
                   <div className="inline-flex items-center px-6 py-4 bg-primary-100 text-primary-800 rounded-lg">
                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-primary-600 mr-3"></div>
-                    Processing your form... This may take a few moments.
+                    Processing your form with AI... This may take a few moments.
                   </div>
                 </div>
               )}
@@ -154,20 +189,50 @@ const UploadPage = () => {
           )}
 
           {/* Conversion Complete */}
-          {isComplete && (
-            <div className="text-center animate-fade-in">
-              <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Conversion Complete!
-              </h3>
-              <p className="text-gray-600 mb-8">
-                Your physical form has been successfully converted to a smart digital format.
-              </p>
+          {isComplete && extractedData && (
+            <div className="animate-fade-in">
+              <div className="text-center mb-8">
+                <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Conversion Complete!
+                </h3>
+                <p className="text-gray-600 mb-2">
+                  {extractedData.summary}
+                </p>
+              </div>
               
+              {/* Extracted Data Preview */}
+              <div className="mb-8">
+                <h4 className="font-semibold text-lg text-gray-900 mb-4">Extracted Form Fields:</h4>
+                <div className="bg-gray-50 rounded-lg p-4">
+                  {Object.entries(extractedData.fields).map(([field, value]) => (
+                    <div key={field} className="mb-3 last:mb-0">
+                      <div className="font-medium text-gray-700">{field}</div>
+                      <div className="mt-1 p-2 bg-white border border-gray-200 rounded text-gray-800">
+                        {value}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="flex items-center justify-center px-6 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors">
+                <button 
+                  className="flex items-center justify-center px-6 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors"
+                  onClick={() => {
+                    // Create a downloadable JSON file
+                    const dataStr = JSON.stringify(extractedData, null, 2);
+                    const blob = new Blob([dataStr], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'extracted_data.json';
+                    link.click();
+                    URL.revokeObjectURL(url);
+                  }}
+                >
                   <Download className="h-5 w-5 mr-2" />
-                  Download Digital Form
+                  Download Extracted Data
                 </button>
                 <button
                   onClick={resetUpload}
@@ -176,6 +241,12 @@ const UploadPage = () => {
                   Upload Another Form
                 </button>
               </div>
+            </div>
+          )}
+
+          {error && !isProcessing && (
+            <div className="text-center text-red-500 mt-4 animate-fade-in">
+              {error}
             </div>
           )}
         </div>
@@ -188,7 +259,7 @@ const UploadPage = () => {
             </div>
             <h3 className="font-semibold text-gray-900 mb-2">AI Recognition</h3>
             <p className="text-gray-600 text-sm">
-              Advanced OCR technology identifies and maps form fields automatically.
+              Powered by Gemini AI to intelligently identify and map form fields.
             </p>
           </div>
 
